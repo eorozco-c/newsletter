@@ -1,0 +1,23 @@
+.bg-custom {
+  background: linear-gradient(
+    27deg,
+    rgba(149, 17, 49, 1) 0%,
+    rgba(103, 9, 32, 1) 15%,
+    rgba(17, 0, 4, 1) 100%
+  );
+}
+.border-custom {
+  border-color: #67092d !important;
+}
+.color-text-custom {
+  color: #daf7a6;
+}
+.color-text-custom:hover {
+  color: yellow;
+}
+.btn-custom {
+  background-color: #ff5733;
+}
+.btn-custom:hover {
+  background-color: #b3391d;
+}
