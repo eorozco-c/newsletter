@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql', # cambiar la base de datos a postgres
         'NAME': 'newsletter',     # nombre de la base de datos, se creará en el servidor de Postgres a continuación
         'USER': 'postgres',     # postgres para macOS o 'USER': 'postgres', para Windows
-        'PASSWORD': '123456',     # contraseña a la que la cambió al instalar Postgres
+        'PASSWORD': 'root',     # contraseña a la que la cambió al instalar Postgres
         'HOST': '127.0.0.1', # dirección IP localhost
         'PORT': '5432', # puerto del servidor postgres predeterminado
     }
@@ -147,8 +147,8 @@ LOGOUT_REDIRECT_URL = "master:index"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+#EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_FILE_PATH = str(os.path.join(BASE_DIR, 'sent_emails'))
 
