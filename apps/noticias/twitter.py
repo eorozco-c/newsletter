@@ -26,12 +26,13 @@ def obtenerTwitters(keywords,cant):
     #     print(f"created_at: {tweet.created_at}\nuser: {tweet.user.screen_name}\ntweet text: {tweet.text}\ngeo_location: {tweet.user.location}\nurl: https://twitter.com/twitter/statuses/{tweet.id}")
     #     print("\n")
 
-def GrabarTwitters(tweets):
-    medio = Medio.objects.filter(name__contains="twitter")
+def GrabarTwitters(tweets,company):
+    medio = Medio.objects.filter(nombre__contains="twitter")
     for tweet in tweets:
         Noticia.objects.create(
             contenido = tweet.text,
             url = tweet.id,
             date = tweet.created_at,
-            medio = medio
+            medio = medio,
+            company = company
             )

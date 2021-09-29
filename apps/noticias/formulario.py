@@ -1,4 +1,5 @@
 from django import forms
 
-class FormularioData(forms.ModelForm):
-    pass
+class FormularioData(forms.Form):
+    keyword = forms.CharField(max_length=255)
+    cantidad = forms.IntegerField()
