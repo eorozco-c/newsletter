@@ -1,5 +1,7 @@
 import tweepy
 from decouple import config
+from .models import Noticia
+from apps.medios.models import Medio
 
 def obtenerTwitters(keywords,cant):
     access_token=config('access_token')
@@ -23,3 +25,14 @@ def obtenerTwitters(keywords,cant):
     # for tweet in tweets:
     #     print(f"created_at: {tweet.created_at}\nuser: {tweet.user.screen_name}\ntweet text: {tweet.text}\ngeo_location: {tweet.user.location}\nurl: https://twitter.com/twitter/statuses/{tweet.id}")
     #     print("\n")
+
+def GrabarTwitters(tweets,company):
+    medio = Medio.objects.filter(nombre__contains="twitter")
+    for tweet in tweets:
+        Noticia.objects.create(
+            contenido = tweet.text,
+            url = tweet.id,
+            date = tweet.created_at,
+            medio = medio,
+            company = company
+            )
