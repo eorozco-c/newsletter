@@ -19,8 +19,6 @@ class ObtenerData(ListView):
         return context
     
     def post(self, request, *args, **kwargs):
-        form = request.POST
-        print(form)
         keyword =  Keyword.objects.get(id=request.POST['keyword'])
         cantidad = request.POST['cantidad']
         if keyword == "" or cantidad == "":
