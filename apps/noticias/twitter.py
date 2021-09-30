@@ -27,7 +27,9 @@ def obtenerTwitters(keywords,cant):
     #     print("\n")
 
 def GrabarTwitters(tweets,company):
-    medio = Medio.objects.get(id=1)
+    medio = Medio.objects.get(nombre__icontains="twitter")
+    print(medio)
+
     for tweet in tweets:
         try:
             Noticia.objects.create(
