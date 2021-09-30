@@ -14,7 +14,8 @@ class ObtenerData(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ObtenerData, self).get_context_data(**kwargs)
-        context['form'] = FormularioData()
+        grupos = Keyword.objects.filter(company=self.request.user.company)
+        context['grupos'] = grupos
         return context
     
     def post(self, request, *args, **kwargs):
