@@ -2,6 +2,10 @@
 {% load static %}
 {% block title %}{{title}}{% endblock title %}
 {% block content %}
+<div class="d-flex justify-content-end">
+    <a class="btn btn-primary btn-sm text-light border border-dark m-1"href="{% url 'noticias:obtenernoticias' %}" id="edit">Buscador <i class="far fa-compass"></i></a>
+</div>
+
 <h1>Dashboard:</h1>
 <div class="container">
 </div>

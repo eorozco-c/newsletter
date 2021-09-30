@@ -19,12 +19,10 @@ class ObtenerData(ListView):
     def post(self, request, *args, **kwargs):
         form = FormularioData(request.POST)
         if form.is_valid():
-            print("SSSSSSS")
             keyword = request.POST['keyword']
             company = self.request.user.company
             cantidad = request.POST['cantidad']
             tweets = twitter.obtenerTwitters(keyword, cantidad)
             twitter.GrabarTwitters(tweets,company)
-            print("XXXXXXX")
             messages.success(request,'Obtencion Realizada con exito.', extra_tags='success')
         return redirect("medios:tipo_medio")
