@@ -17,6 +17,7 @@ class ObtenerData(ListView):
         return context
     
     def post(self, request, *args, **kwargs):
+<<<<<<< Updated upstream
         form = FormularioData(request.POST)
         if form.is_valid():
             print("SSSSSSS")
@@ -28,3 +29,17 @@ class ObtenerData(ListView):
             print("XXXXXXX")
             messages.success(request,'Obtencion Realizada con exito.', extra_tags='success')
         return redirect("medios:tipo_medio")
+=======
+        form = request.POST
+        print(form)
+        keyword =  Keyword.objects.get(id=request.POST['keyword'])
+        cantidad = request.POST['cantidad']
+        if keyword == "" or cantidad == "":
+            messages.success(request,'Campos obligatorios', extra_tags='danger')
+            return redirect("noticias:obtenernoticias")
+        tweets = twitter.obtenerTwitters(keyword.keywords, cantidad)
+        company = self.request.user.company
+        twitter.GrabarTwitters(tweets,company,keyword)
+        messages.success(request,'Obtencion Realizada con exito.', extra_tags='success')
+        return redirect("noticias:obtenernoticias")
+>>>>>>> Stashed changes

@@ -26,6 +26,7 @@ def obtenerTwitters(keywords,cant):
     #     print(f"created_at: {tweet.created_at}\nuser: {tweet.user.screen_name}\ntweet text: {tweet.text}\ngeo_location: {tweet.user.location}\nurl: https://twitter.com/twitter/statuses/{tweet.id}")
     #     print("\n")
 
+<<<<<<< Updated upstream
 def GrabarTwitters(tweets,company):
     medio = Medio.objects.filter(nombre__contains="twitter")
     for tweet in tweets:
@@ -36,3 +37,21 @@ def GrabarTwitters(tweets,company):
             medio = medio,
             company = company
             )
+=======
+def GrabarTwitters(tweets,company,keyword):
+    medio = Medio.objects.get(nombre__icontains="twitter")
+    print(medio)
+
+    for tweet in tweets:
+        try:
+            Noticia.objects.create(
+                contenido = tweet.text,
+                url = tweet.id,
+                date = tweet.created_at,
+                medio = medio,
+                keyword = keyword,
+                company = company
+                )
+        except:
+            print("Ya existe esta nota")
+>>>>>>> Stashed changes

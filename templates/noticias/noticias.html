@@ -19,10 +19,23 @@
         {% endfor %}
         {% endif %}
         {% csrf_token %}
+<<<<<<< Updated upstream
         {{form}}
         <button type="submit" class="d-inline-block btn btn-success ms-2 text-light ">Nuevo
             Tipo</button>
 
+=======
+        <label for="id_grupo">Grupo:</label>
+        <select class="form-select" type="select" name="keyword" maxlength="100" required="" id="id_grupo">
+            <option selected disable>----------</option>
+            {% for grupo in grupos  %}
+            <option value="{{grupo.id}}">{{grupo.grupo}}</option>
+            {% endfor %}
+        </select>
+        <label for="cantidad">cantidad:</label>
+        <input type="text" name="cantidad" id="cantiadd">
+        <button type="submit" class="d-inline-block btn btn-success ms-2 text-light ">Generar</button>
+>>>>>>> Stashed changes
     </form>
 </div>
 <div>
