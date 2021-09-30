@@ -10,7 +10,7 @@
         menú</a>
 </div>
 <div>
-    <form method="POST" class="mb-3 p-3 align-items-center">
+    <form method="POST" class="mb-3 p-3 align-items-center" action="{% url 'noticias:obtenernoticias' %}">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">{{message}}
@@ -19,9 +19,16 @@
         {% endfor %}
         {% endif %}
         {% csrf_token %}
-        {{form}}
-        <button type="submit" class="d-inline-block btn btn-success ms-2 text-light ">Descargar</button>
-
+        <label for="id_grupo">Grupo:</label>
+        <select class="form-select" type="select" name="keyword" maxlength="100" required="" id="id_grupo">
+            <option selected disable>----------</option>
+            {% for grupo in grupos  %}
+            <option value="{{grupo.keywords}}">{{grupo.grupo}}</option>
+            {% endfor %}
+        </select>
+        <label for="cantidad">cantidad:</label>
+        <input type="text" name="cantidad" id="cantiadd">
+        <button type="submit" class="d-inline-block btn btn-success ms-2 text-light ">Generar</button>
     </form>
 </div>
 <div>
@@ -42,7 +49,8 @@
                 <td>{{tweet.contenido}}</td>
                 <td>
                     <a class="btn btn-primary btn-sm text-light border border-dark m-1"
-                        href="https://twitter.com/twitter/statuses/{{tweet.url}}" id="edit"><i class="fas fa-paperclip"></i></a>
+                        href="https://twitter.com/twitter/statuses/{{tweet.url}}" id="edit"><i
+                            class="fas fa-paperclip"></i></a>
                     <a class="open-modal btn btn-danger btn-sm text-light border border-dark m-1" data-bs-toggle="modal"
                         data-bs-target="#modal" data-popup-url="{% url 'medios:tipo_medio_predestroy' pk=tweet.id %}"
                         href="#">
@@ -57,7 +65,8 @@
     <div class="modal-dialog" notempty='not'>
         <div class="modal-content" notempty='not'>
             <div class="modal-header bg-custom" notempty='not'>
-                <h5 class="modal-title color-text-custom" id="modalLabel" notempty='not'>Desea Eliminar la siguente Nota?:</h5>
+                <h5 class="modal-title color-text-custom" id="modalLabel" notempty='not'>Desea Eliminar la siguente
+                    Nota?:</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" notempty='not'>

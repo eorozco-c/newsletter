@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql', # cambiar la base de datos a postgres
         'NAME': 'newsletter',     # nombre de la base de datos, se creará en el servidor de Postgres a continuación
         'USER': 'postgres',     # postgres para macOS o 'USER': 'postgres', para Windows
-        'PASSWORD': '123456',     # contraseña a la que la cambió al instalar Postgres
+        'PASSWORD': config('PASSWORD_POSTGRES'),     # contraseña a la que la cambió al instalar Postgres
         'HOST': '127.0.0.1', # dirección IP localhost
         'PORT': '5432', # puerto del servidor postgres predeterminado
     }

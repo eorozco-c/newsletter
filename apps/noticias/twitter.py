@@ -13,12 +13,8 @@ def obtenerTwitters(keywords,cant):
     auth.set_access_token(access_token,access_token_secret)
 
     api = tweepy.API(auth,wait_on_rate_limit=True)
-    
-    words = ""
-    for key in keywords:
-        words += f"{key} OR "
 
-    search_words = words
+    print(keywords)
 
     tweets = api.search_tweets(q=keywords,lang="es",result_type="mixed",count=cant)
     return tweets
