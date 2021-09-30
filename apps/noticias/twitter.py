@@ -27,13 +27,22 @@ def GrabarTwitters(tweets,company):
     print(medio)
 
     for tweet in tweets:
+        Noticia.objects.create(
+            contenido = tweet.text,
+            url = tweet.id,
+            date = tweet.created_at,
+            medio = medio,
+            company = company
+            )
         try:
             Noticia.objects.create(
                 contenido = tweet.text,
                 url = tweet.id,
                 date = tweet.created_at,
                 medio = medio,
+                keyword = keyword,
                 company = company
                 )
         except:
             print("Ya existe esta nota")
+

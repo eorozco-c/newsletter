@@ -23,7 +23,7 @@
         <select class="form-select" type="select" name="keyword" maxlength="100" required="" id="id_grupo">
             <option selected disable>----------</option>
             {% for grupo in grupos  %}
-            <option value="{{grupo.keywords}}">{{grupo.grupo}}</option>
+            <option value="{{grupo.id}}">{{grupo.grupo}}</option>
             {% endfor %}
         </select>
         <label for="cantidad">cantidad:</label>
