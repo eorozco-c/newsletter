@@ -13,10 +13,14 @@ def obtenerTwitters(keywords,cant):
     auth.set_access_token(access_token,access_token_secret)
 
     api = tweepy.API(auth,wait_on_rate_limit=True)
+    
+    words = ""
+    for key in keywords:
+        words += f"{key} OR "
 
-    print(keywords)
+    search_words = words
 
-    tweets = api.search_tweets(q=keywords,lang="es",result_type="mixed",count=cant)
+    tweets = api.search_tweets(q=search_words,lang="es",result_type="recent",count=cant)
     return tweets
     # for tweet in tweets:
     #     print(f"created_at: {tweet.created_at}\nuser: {tweet.user.screen_name}\ntweet text: {tweet.text}\ngeo_location: {tweet.user.location}\nurl: https://twitter.com/twitter/statuses/{tweet.id}")
@@ -38,4 +42,3 @@ def GrabarTwitters(tweets,company,keyword):
                 )
         except:
             print("Ya existe esta nota")
-
