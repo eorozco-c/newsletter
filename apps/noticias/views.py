@@ -19,11 +19,11 @@ class ObtenerData(ListView):
         return context
     
     def post(self, request, *args, **kwargs):
+        if request.POST['keyword'] == "" or request.POST['cantidad'] == "":
+            messages.success(request,'Ambos campos obligatorios', extra_tags='danger')
+            return redirect("noticias:obtenernoticias")
         keyword =  Keyword.objects.get(id=request.POST['keyword'])
         cantidad = request.POST['cantidad']
-        if keyword == "" or cantidad == "":
-            messages.success(request,'Campos obligatorios', extra_tags='danger')
-            return redirect("noticias:obtenernoticias")
         tweets = twitter.obtenerTwitters(keyword.keywords, cantidad)
         company = self.request.user.company
         twitter.GrabarTwitters(tweets,company,keyword)
