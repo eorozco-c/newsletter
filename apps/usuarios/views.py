@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.views.generic.edit import CreateView, UpdateView
-from .formularios import FormularioRegistro, FormularioRegistroSU
+from .formularios import FormularioRegistro, FormularioRegistroSU, FormularioEditar
 from .models import Usuario
 from apps.companies.models import Company
 from django.contrib.auth.decorators import login_required
@@ -48,7 +48,8 @@ class Register(CreateView):
 class Profile(UpdateView):
     template_name = "formularios/generico.html"
     model = Usuario
-    form_class = FormularioRegistro
+    form_class = FormularioEditar
+    success_url = reverse_lazy("master:index")
 
     def get(self, request, pk):
         usuario = self.get_object()

@@ -11,6 +11,6 @@ def index(request):
 @login_required(login_url='/')
 def menu(request):
     context = {
-        'keywords' : Keyword.objects.all()
+        'keywords' : Keyword.objects.filter(company=request.user.company)
     } 
     return render(request, "menu.html", context)

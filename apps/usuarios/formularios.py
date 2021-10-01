@@ -53,3 +53,9 @@ class FormularioRegistro(FormularioRegistroSU):
         widgets = {
             "password" : forms.PasswordInput(),
         }
+
+class FormularioEditar(forms.ModelForm):
+
+    class Meta:
+        model = Usuario
+        fields = ["first_name", "last_name", "company"]

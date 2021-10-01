@@ -29,6 +29,10 @@ class NuevoKeyword(ListView):
             messages.success(request,'Agregado correctamente.', extra_tags='success')
         return redirect("keywords:index")
 
+    def get_queryset(self):
+        queryset = Keyword.objects.filter(company=self.request.user.company)
+        return queryset
+
 @method_decorator(login_required, name='dispatch')
 class EditKeyword(UpdateView):
     template_name = "formularios/generico.html"

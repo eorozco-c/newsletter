@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.medios',
     'apps.noticias',
     'apps.keywords',
+    'apps.estadisticas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

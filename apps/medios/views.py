@@ -27,6 +27,7 @@ class NuevoTipoMedio(ListView):
             messages.success(request,'Agregado correctamente.', extra_tags='success')
         return redirect("medios:tipo_medio")
 
+
 @method_decorator(login_required, name='dispatch')
 class EditTipoMedio(UpdateView):
     template_name = "formularios/generico.html"
@@ -85,6 +86,10 @@ class NuevoMedio(ListView):
             medio.save()
             messages.success(request,'Agregado correctamente.', extra_tags='success')
         return redirect("medios:index")
+
+    def get_queryset(self):
+        queryset = Medio.objects.filter(company=self.request.user.company)
+        return queryset
 
 @method_decorator(login_required, name='dispatch')
 class EditMedio(UpdateView):

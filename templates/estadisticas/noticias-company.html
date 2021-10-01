@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Estadisticas{% endblock title %}
+{% block content %}
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+{% endblock content %}
+{% block javascript %}
+<script>
+    $.ajax({
+        type: "GET",
+        url: "/estadisticas/populate-noticias-company",
+        dataType: "json",
+        success: function (queryset) {
+
+            console.log(queryset)
+            const labels = queryset.labels;
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Noticias X Grupo',
+                    data: queryset.data,
+                    backgroundColor: [
+                        'rgba(149, 17, 49, 0.6)',
+                        'rgba(255,255,78,0.8)',
+
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    layout: {
+                        padding: 20
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                },
+            };
+            var myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        }
+    });
+</script>
+{% endblock javascript %}
