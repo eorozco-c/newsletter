@@ -118,7 +118,7 @@ def medio_predestroy(request, pk):
 def medio_destroy(request,pk):
     if request.method == "GET":
         try:
-            sector = TipoMedio.objects.get(id=pk)
+            sector = Medio.objects.get(id=pk)
         except:
             return redirect("medios:index") 
         sector.delete()
